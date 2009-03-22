@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Amalgamator</title>
+    <link href="/main.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Amalgamator</h1>
+        <h3>Enter two RSS feed URLs and get a combined feed without exact duplicates.</h3>
+      </div>
+      <div id="body">
+        <% if @error %>
+          <div class="error"><%= @error %></div>
+        <% end %>
+        <form action="/feed" method="get">
+          <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[0] || "''" %>>
+          <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[1] || "''" %>>
+          <input type="submit" class="submit" value="Join Feeds">
+        </form>
+      </div>
+      <div id="footer">
+        <p>
+          Copyright 2009 <a href="http://jeff.dallien.net">Jeff Dallien</a> | 
+          <a href="http://github.com/jdallien/amalgamator">Get the code</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

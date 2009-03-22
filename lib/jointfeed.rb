@@ -12,7 +12,8 @@ class JointFeed
     feed_without_duplicates = @feeds[0].entries.reject do |entry|
       @feeds[1].entries.any? {|other| entry.summary == other.summary}
     end
-    feed_without_duplicates + @feeds[1].entries
+    unsorted = feed_without_duplicates + @feeds[1].entries
+    unsorted.sort {|a,b| a.published <=> b.published}
   end
 
   def title

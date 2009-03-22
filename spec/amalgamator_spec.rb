@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 require File.join(File.dirname(__FILE__), '..', 'lib', 'jointfeed')
 require File.join(File.dirname(__FILE__), '..', 'amalgamator')
 require 'spec'
@@ -42,15 +44,19 @@ describe 'getting two joined feeds' do
                                  :entries     => 3.times.map{ mock_entry },
                                  :description => "DESCRIPTION")
     JointFeed.should_receive(:new).and_return(@jointfeed)
-    @page = elements(:from => :do_get) do |tag|
+    @page = elements(:from => :do_get, :as => :xml) do |tag|
       tag.items 'item'
+      tag.guids 'guid'
+      tag.links 'item/link'
     end
   end
 
   def mock_entry
     mock("Entry", :title     => "TITLE",
                   :summary   => "SUMMARY",
-                  :published => "DATE")
+                  :published => "DATE",
+                  :id        => "GUID",
+                  :url       => "LINK")
   end
 
   def do_get
@@ -65,10 +71,20 @@ describe 'getting two joined feeds' do
 
   it "should return an RSS XML document" do
     do_get
-    @response.content_type.should == "application/rss+xml"
+    response.content_type.should == "application/rss+xml"
   end
 
   it "should have the correct number of feed items" do
     @page.should have(@jointfeed.entries.size).items
+  end
+
+  it "should repeat the items' guid field in the combined feed" do
+    @page.guids.size.should == 3
+    @page.guids[0].inner_text.should == "GUID"
+  end
+
+  it "should repeat the items' link field in the combined feed" do
+    @page.links.size.should == 3
+    @page.links[0].inner_text.should == "LINK"
   end
 end

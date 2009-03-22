@@ -10,8 +10,8 @@ xml.rss(:version=>"2.0"){
         xml.title(entry.title)
         xml.description(entry.summary)
         xml.pubDate(entry.published)
-#        xml.link(entry.link)
-#        xml.guid(entry.guid)
+        xml.link(entry.url)
+        xml.guid(entry.id)
       end
     end
   }

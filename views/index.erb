@@ -15,9 +15,11 @@
           <div class="error"><%= @error %></div>
         <% end %>
         <form action="feed" method="get">
-          <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[0] || "''" %>>
-          <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[1] || "''" %>>
-          <input type="submit" class="submit" value="Join Feeds">
+          <fieldset>
+            <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[0] || "''" %> />
+            <input type="text" name="feeds" class="feed_url" value=<%= @feed_urls[1] || "''" %> />
+            <input type="submit" class="submit" value="Join Feeds" />
+          </fieldset>
         </form>
       </div>
       <div id="footer">

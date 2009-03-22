@@ -12,6 +12,10 @@ input.feed_url {
   font-size: small;
 }
 
+fieldset {
+  border: none;
+}
+
 /* CSS header/body/footer layout from
  * http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page */
 

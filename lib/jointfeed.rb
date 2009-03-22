@@ -16,7 +16,7 @@ class JointFeed
   end
 
   def title
-    @feeds.map(&:title).join(' + ')
+    @feeds.map{|feed| feed.title}.join(' + ')
   end
 
   def description

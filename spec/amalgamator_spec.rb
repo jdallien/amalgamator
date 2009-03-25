@@ -1,5 +1,3 @@
-require 'ruby-debug'
-
 require File.join(File.dirname(__FILE__), '..', 'lib', 'jointfeed')
 require File.join(File.dirname(__FILE__), '..', 'amalgamator')
 require 'spec'

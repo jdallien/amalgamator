@@ -3,6 +3,8 @@ Amalgamator
 ### Join two RSS feeds without exact duplicate items. ###
 by Jeff Dallien (jeff@dallien.net) [http://jeff.dallien.net](http://jeff.dallien.net)
 
+Try it out at http://jeff.dallien.net/amalgamator/
+
 Uses [Sinatra](http://www.sinatrarb.com/) and [Feedzirra](http://github.com/pauldix/feedzirra/tree/master)
 
 #### License ####

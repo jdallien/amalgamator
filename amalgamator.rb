@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'sinatra'
+require 'builder'
+require 'feedzirra'
 require File.join(File.dirname(__FILE__), 'lib', 'jointfeed')
 
 get '/' do

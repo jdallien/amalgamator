@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'feedzirra'
-
 class JointFeed
   class FeedError < StandardError; end
 

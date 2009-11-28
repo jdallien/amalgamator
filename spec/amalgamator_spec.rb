@@ -43,7 +43,7 @@ describe 'getting two joined feeds' do
 
   before :each do
     @jointfeed = mock(JointFeed, :title       => "TITLE",
-                                 :entries     => 3.times.map{ mock_entry },
+                                 :entries     => (1..3).map{ mock_entry },
                                  :description => "DESCRIPTION")
     JointFeed.should_receive(:new).and_return(@jointfeed)
     @page = elements(:from => :do_get, :as => :xml) do |tag|

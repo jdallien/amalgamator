@@ -1,8 +1,8 @@
 require File.join(File.dirname(__FILE__), '..', 'lib', 'jointfeed')
+require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor.rb')
+require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor', 'spec.rb')
 require 'ostruct'
 require 'spec'
-require 'elementor'
-require 'elementor/spec'
 
 describe 'a JointFeed' do
   include Elementor

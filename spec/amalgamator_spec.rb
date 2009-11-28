@@ -1,10 +1,10 @@
 require File.join(File.dirname(__FILE__), '..', 'lib', 'jointfeed')
 require File.join(File.dirname(__FILE__), '..', 'amalgamator')
+require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor.rb')
+require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor', 'spec.rb')
 require 'spec'
 require 'spec/interop/test'
 require 'rack/test'
-require 'elementor'
-require 'elementor/spec'
 
 set :environment, :test
 

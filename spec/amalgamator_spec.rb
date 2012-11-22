@@ -31,12 +31,15 @@ describe 'getting two joined feeds' do
   include Rack::Test::Methods
 
   before :each do
-    @jointfeed = mock(JointFeed, :title       => "TITLE",
-                                 :entries     => (1..3).map{ mock_entry },
-                                 :description => "DESCRIPTION")
+    @jointfeed = mock(JointFeed,
+      :title       => "TITLE",
+      :entries     => (1..3).map{ mock_entry },
+      :description => "DESCRIPTION")
     JointFeed.should_receive(:new).and_return(@jointfeed)
 
-    get "/feed", 'feeds' => ["http://feed1.test/posts.xml", "http://feed2.test/posts.xml"]
+    get "/feed", 'feeds' =>
+      ["http://feed1.test/posts.xml",
+       "http://feed2.test/posts.xml"]
     @xml = Nokogiri::XML(last_response.body)
   end
 
@@ -61,16 +64,19 @@ describe 'getting two joined feeds' do
   end
 
   it "should have the correct number of feed items" do
-    @xml.xpath("//rss/channel/item").size.should == @jointfeed.entries.size
+    @xml.xpath("//rss/channel/item").size.should ==
+      @jointfeed.entries.size
   end
 
   it "should repeat the items' guid field in the combined feed" do
-    @xml.xpath("//rss/channel/item/guid").size.should == 3
-    @xml.xpath("//rss/channel/item/guid").first.inner_text.should == "GUID"
+    guid_tags = @xml.xpath("//rss/channel/item/guid")
+    guid_tags.size.should == 3
+    guid_tags.first.inner_text.should == "GUID"
   end
 
   it "should repeat the items' link field in the combined feed" do
-    @xml.xpath("//rss/channel/item/link").size.should == 3
-    @xml.xpath("//rss/channel/item/link").first.inner_text.should == "LINK"
+    link_tags = @xml.xpath("//rss/channel/item/link")
+    link_tags.size.should == 3
+    link_tags.first.inner_text.should == "LINK"
   end
 end

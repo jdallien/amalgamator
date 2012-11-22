@@ -1,28 +1,34 @@
 require File.join(File.dirname(__FILE__), '..', 'lib', 'jointfeed')
-require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor.rb')
-require File.join(File.dirname(__FILE__), '..', 'vendor', 'elementor-0.0.8', 'lib', 'elementor', 'spec.rb')
+require 'feedzirra'
 require 'ostruct'
-require 'spec'
+require 'date'
 
 describe 'a JointFeed' do
-  include Elementor
-
   before :each do
     @feed_urls = ["http://feed1.test/posts.xml", "http://feed2.test/posts.xml"]
-    base_date  = Time.parse("1/1/2009") 
-    @feeds = [mock("Feed", :title => "TITLE1", 
-                           :entries => [OpenStruct.new({:summary   => "SUMMARY1",
-                                                        :published => base_date}),
-                                        OpenStruct.new({:summary   => "SUMMARY2",
-                                                        :published => base_date + 10})]),
-              mock("Feed", :title => "TITLE2",
-                           :entries => [OpenStruct.new({:summary   => "SUMMARY2",
-                                                        :published => base_date + 10}),
-                                        OpenStruct.new({:summary   => "SUMMARY3",
-                                                        :published => base_date + 5})])]
+    base_date  = Date.parse("1/1/2012") 
+    @feeds = [
+      mock("Feed",
+        :title => "TITLE1", 
+        :entries => [OpenStruct.new({:summary   => "SUMMARY1",
+                                     :published => base_date}),
+                     OpenStruct.new({:summary   => "SUMMARY2",
+                                     :published => base_date + 10})]),
+      mock("Feed",
+        :title => "TITLE2",
+        :entries => [OpenStruct.new({:summary   => "SUMMARY2",
+                                     :published => base_date + 10}),
+                     OpenStruct.new({:summary   => "SUMMARY3",
+                                     :published => base_date + 5})])
+    ]
+
     @feed_urls.each_with_index do |url, index|
-      Feedzirra::Feed.should_receive(:fetch_and_parse).with(url).and_return(@feeds[index])
+      Feedzirra::Feed.
+        should_receive(:fetch_and_parse).
+          with(url).
+            and_return(@feeds[index])
     end
+
     @it = JointFeed.new(@feed_urls)
   end
 

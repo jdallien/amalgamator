@@ -1,13 +1,8 @@
 require 'rubygems'
-require 'spec'
-require 'spec/rake/spectask'
-require 'spec/interop/test'
+require 'rspec'
+require 'rspec/core/rake_task'
 
 task :default => :spec
 
 desc "Run all specs"
-Spec::Rake::SpecTask.new(:spec) do |t|
-   t.spec_opts = ['--color'] # considered invalid
-   t.spec_files = FileList['spec/*.rb']
-end
-
+RSpec::Core::RakeTask.new(:spec)

@@ -3,13 +3,13 @@ Amalgamator
 ### Join two RSS feeds without exact duplicate items. ###
 by Jeff Dallien (jeff@dallien.net) [http://jeff.dallien.net](http://jeff.dallien.net)
 
-Try it out at http://jeff.dallien.net/amalgamator/
+Try it out at http://amalgamator.heroku.com/
 
 Uses [Sinatra](http://www.sinatrarb.com/) and [Feedzirra](http://github.com/pauldix/feedzirra/tree/master)
 
 #### License ####
 
-Copyright (c) 2009 Jeff Dallien
+Copyright (c) 2009-2012 Jeff Dallien
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,0 +1,15 @@
+== 2012-11-21
+ * Update for ruby 1.9.3 compatibility
+
+== 2010-04-23
+ * Changes to run app on Heroku
+
+== 2009-11-28
+ * Changes to run build on RunCodeRun
+
+== 2009-03-22
+ * Fix sorting in combined feeds
+ * Include link and guid tags in combined feeds
+
+== 2009-03-21
+ * First commit
